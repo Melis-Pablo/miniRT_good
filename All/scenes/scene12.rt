@@ -1,0 +1,17 @@
+# Camera positioned at (0, 2, 5) looking towards (0, 0, -1) with a 50-degree field of view
+C 		0,2,5 		0,0,-1 		50
+
+# Grey plane at (0, -2, 0) with normal (0, 1, 0)
+pl	0,-2,0 		0,1,0 		127,127,127
+
+# Sphere (Ball) at (0, 0, 0) with radius 1 and white color
+sp 	0,0,0 	1 	255,255,255
+
+# Light source at (-10, 10, -10) with intensity 1 and red color
+L	 -10,10,-10 	1 	255,0,0
+
+# Light source at (10, 10, -10) with intensity 1 and green color
+L	 10,10,-10 	1 	0,255,0
+
+# Light source at (0, 10, 10) with intensity 1 and blue color
+L	 0,10,10 	1 	0,0,255

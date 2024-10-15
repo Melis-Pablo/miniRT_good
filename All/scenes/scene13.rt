@@ -1,0 +1,21 @@
+# Camera positioned closer to the scene, slightly above and angled down
+C 0,3,5 0,-0.3,-1 75
+
+# White sphere at the center, slightly above the plane
+sp 0,2,-2 1 255,255,255
+
+# Grey plane beneath the sphere
+pl 0,-3,0 0,1,0 200,200,200
+
+# Red light source
+L 3,4,-3 0.8 255,0,0
+
+# Green light source
+L -3,4,-3 0.8 0,255,0
+
+# Blue light source
+L 0,4,2 0.8 0,0,255
+
+# Weak ambient light to prevent complete blackness
+L 0,8,0 0.1 255,255,255
+
