@@ -6,7 +6,7 @@
 /*   By: pmelis <pmelis@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 10:47:58 by pmelis            #+#    #+#             */
-/*   Updated: 2024/10/12 13:40:02 by pmelis           ###   ########.fr       */
+/*   Updated: 2024/10/15 12:39:09 by pmelis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ int	free_scene(t_scene *scene, int ret)
 {
 	if (scene)
 	{
+		// camera
+		// ambient
+		// filename
 	}
 	return (ret);
+}
+
+int	key_hook(int keycode, t_scene *scene)
+{
+	if (keycode == MAIN_PAD_ESC)
+	{
+		free_scene(scene, 0);
+		exit(0);
+	}
+	return (0);
 }

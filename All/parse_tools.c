@@ -6,7 +6,7 @@
 /*   By: pmelis <pmelis@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 14:08:04 by pmelis            #+#    #+#             */
-/*   Updated: 2024/10/15 11:39:00 by pmelis           ###   ########.fr       */
+/*   Updated: 2024/10/15 12:58:59 by pmelis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	check_chars(char *line)
 	return (INVALID);
 }
 
-t_scene	*init_scene(void)
+t_scene	*init_scene(char *filename)
 {
 	t_scene	*scene;
 
@@ -100,5 +100,13 @@ t_scene	*init_scene(void)
 	scene->width = 800;
 	scene->height = 800;
 	scene->anti_aliasing_samples = 4;
+	scene->filename = malloc(ft_strlen(filename) + 1);
+	if (!scene->filename)
+	{
+		perror("Error: Memory allocation failed for filename\n");
+		free(scene);
+		exit(1);
+	}
+	ft_strcpy(scene->filename, filename);
 	return (scene);
 }

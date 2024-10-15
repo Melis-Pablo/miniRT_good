@@ -6,7 +6,7 @@
 /*   By: pmelis <pmelis@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 14:54:29 by pmelis            #+#    #+#             */
-/*   Updated: 2024/10/12 14:59:41 by pmelis           ###   ########.fr       */
+/*   Updated: 2024/10/15 12:38:42 by pmelis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,4 @@ int	create_trgb( int r, int g, int b)
 
 	t = 0X00;
 	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-int	key_hook(int keycode, t_scene *scene)
-{
-	if (keycode == MAIN_PAD_ESC)
-	{
-		free_scene(scene, 0);
-		exit(0);
-	}
-	return (0);
 }

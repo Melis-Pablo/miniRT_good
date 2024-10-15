@@ -6,7 +6,7 @@
 /*   By: pmelis <pmelis@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 12:09:02 by pmelis            #+#    #+#             */
-/*   Updated: 2024/10/12 12:09:18 by pmelis           ###   ########.fr       */
+/*   Updated: 2024/10/15 12:57:23 by pmelis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,15 @@ float	ft_atof(const char	*str)
 		dec_part = dec_part + (*str++ - 48) * power;
 	}
 	return ((float)((int_part + dec_part) * sign));
+}
+
+char	*ft_strcpy(char *dest, const char *src)
+{
+	char	*ptr;
+
+	ptr = dest;
+	while (*src)
+		*ptr++ = *src++;
+	*ptr = '\0';
+	return (dest);
 }

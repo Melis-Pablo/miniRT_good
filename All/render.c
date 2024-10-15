@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_normed.c                                    :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmelis <pmelis@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 12:25:01 by pmelis            #+#    #+#             */
-/*   Updated: 2024/10/14 13:39:54 by pmelis           ###   ########.fr       */
+/*   Updated: 2024/10/15 13:04:10 by pmelis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ void	render(t_scene *scene)
 	t_data	img;
 
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, scene->width, scene->height, "MINIRT.01");
+	scene->filename = ft_strjoin(scene->filename, "	->	miniRT");
+	win = mlx_new_window(mlx, scene->width, scene->height, scene->filename);
 	img.img = mlx_new_image(mlx, scene->width, scene->height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);

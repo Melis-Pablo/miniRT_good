@@ -6,7 +6,7 @@
 /*   By: pmelis <pmelis@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 09:54:20 by pmelis            #+#    #+#             */
-/*   Updated: 2024/10/15 11:26:40 by pmelis           ###   ########.fr       */
+/*   Updated: 2024/10/15 12:57:45 by pmelis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ typedef struct s_scene
 	int				width;
 	int				height;
 	int				anti_aliasing_samples;
+	char			*filename;
 }	t_scene;
 
 typedef struct s_ray_calc
@@ -179,6 +180,7 @@ int				perror_ret(char *msg);
 void			perror_exit(char *msg);
 void			perror_exit_free(char *msg, void *ptr);
 int				free_scene(t_scene *scene, int ret);
+int				key_hook(int keycode, t_scene *scene);
 // get_next_line.c
 char			*get_next_line(int fd);
 // get_utils.c
@@ -198,12 +200,11 @@ void			get_cy(char *line, t_scene *scene);
 // ml_extras.c
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				create_trgb( int r, int g, int b);
-int				key_hook(int keycode, t_scene *scene);
 // parse_tools.c
 int				file_extension_ok(char *scene);
 int				parse_scene(char *filename, t_scene *scene);
 int				check_chars(char *line);
-t_scene			*init_scene(void);
+t_scene			*init_scene(char *filename);
 // print_lights.c
 void			print_light(t_light *light);
 void			print_ambient_light(t_ambient_light *ambient);
@@ -262,6 +263,7 @@ char			*ft_strchr(const char *s, int c);
 char			*ft_strjoin(char *s1, char *s2);
 // utils2.c
 float			ft_atof(const char	*str);
+char			*ft_strcpy(char *dest, const char *src);
 // vector_ops.c
 t_vec3			vec3_create(float x, float y, float z);
 t_vec3			vec3_add(t_vec3 a, t_vec3 b);
