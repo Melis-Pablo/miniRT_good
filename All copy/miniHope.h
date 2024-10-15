@@ -6,7 +6,7 @@
 /*   By: pmelis <pmelis@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 09:54:20 by pmelis            #+#    #+#             */
-/*   Updated: 2024/10/15 22:31:46 by pmelis           ###   ########.fr       */
+/*   Updated: 2024/10/15 22:53:59 by pmelis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # include <stdlib.h> // malloc, free, exit
 # include <fcntl.h> // open
 # include <math.h> // math library -> -lm flag needed (man 3 math)
-# include "./mlx/mlx.h"
+// # include "./mlx/mlx.h"
 // # include <sys/stat.h> // open
 // # include <string.h> // strerror
-// # include <mlx.h> // minilibX
+# include <mlx.h> // minilibX
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
@@ -138,6 +138,9 @@ typedef struct s_scene
 	int				height;
 	int				anti_aliasing_samples;
 	char			*filename;
+	void			*mlx;
+	void			*win;
+	t_data			img;
 }	t_scene;
 
 typedef struct s_ray_ret

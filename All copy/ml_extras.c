@@ -1,50 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
+/*   ml_extras.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmelis <pmelis@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 10:47:58 by pmelis            #+#    #+#             */
-/*   Updated: 2024/10/15 22:23:47 by pmelis           ###   ########.fr       */
+/*   Created: 2024/10/12 14:54:29 by pmelis            #+#    #+#             */
+/*   Updated: 2024/10/15 12:38:42 by pmelis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniHope.h"
 
-int	perror_ret(char *msg)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	perror(msg);
-	return (1);
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
 
-void	perror_exit(char *msg)
+int	create_trgb( int r, int g, int b)
 {
-	perror(msg);
-	exit(1);
-}
+	int	t;
 
-void	perror_exit_free(char *msg, void *ptr)
-{
-	perror(msg);
-	free(ptr);
-	exit(1);
-}
-
-int	free_scene(t_scene *scene, int ret)
-{
-	if (scene)
-	{
-	}
-	return (ret);
-}
-
-int	key_hook(int keycode, t_scene *scene)
-{
-	if (keycode == MAIN_PAD_ESC)
-	{
-		free_scene(scene, 0);
-		exit(0);
-	}
-	return (0);
+	t = 0X00;
+	return (t << 24 | r << 16 | g << 8 | b);
 }

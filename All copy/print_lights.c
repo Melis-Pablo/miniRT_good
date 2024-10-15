@@ -1,50 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
+/*   print_lights.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmelis <pmelis@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 10:47:58 by pmelis            #+#    #+#             */
-/*   Updated: 2024/10/15 22:23:47 by pmelis           ###   ########.fr       */
+/*   Created: 2024/10/14 10:27:42 by pmelis            #+#    #+#             */
+/*   Updated: 2024/10/14 10:29:13 by pmelis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniHope.h"
 
-int	perror_ret(char *msg)
+void	print_light(t_light *light)
 {
-	perror(msg);
-	return (1);
+	printf("	position: ");
+	print_vec3(light->position);
+	printf("	color: ");
+	print_vec3(light->color);
+	printf("	intensity: %f\n", light->intensity);
 }
 
-void	perror_exit(char *msg)
+void	print_ambient_light(t_ambient_light *ambient)
 {
-	perror(msg);
-	exit(1);
-}
-
-void	perror_exit_free(char *msg, void *ptr)
-{
-	perror(msg);
-	free(ptr);
-	exit(1);
-}
-
-int	free_scene(t_scene *scene, int ret)
-{
-	if (scene)
+	if (!ambient)
 	{
+		printf("No ambient light\n");
+		return ;
 	}
-	return (ret);
-}
-
-int	key_hook(int keycode, t_scene *scene)
-{
-	if (keycode == MAIN_PAD_ESC)
-	{
-		free_scene(scene, 0);
-		exit(0);
-	}
-	return (0);
+	printf("ambient light:\n");
+	printf("	intensity: %f\n", ambient->intensity);
+	printf("	color: ");
+	print_vec3(ambient->color);
 }

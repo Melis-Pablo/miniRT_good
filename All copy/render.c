@@ -6,7 +6,7 @@
 /*   By: pmelis <pmelis@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 12:25:01 by pmelis            #+#    #+#             */
-/*   Updated: 2024/10/15 22:37:35 by pmelis           ###   ########.fr       */
+/*   Updated: 2024/10/15 23:08:10 by pmelis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,11 @@ typedef struct s_mlx_data
 	t_data	img;
 }	t_mlx_data;
 
-int	close_x(t_mlx_data *mlx_data)
+int	close_x(t_scene *scene)
 {
-	mlx_destroy_window(mlx_data->mlx, mlx_data->win);
-
+	// mlx_destroy_image(scene->mlx, scene->img.img);
+	// mlx_destroy_window(scene->mlx, scene->win);
+	// free_scene(scene, 0);
 	exit(0);
 	return (0);
 }
@@ -104,18 +105,18 @@ void	render(t_scene *scene)
 	// void	*mlx;
 	// void	*win;
 	// t_data	img;
-	t_mlx_data	mlx_data;
+	// t_mlx_data	mlx_data;
 	// mlx_data = NULL;
 
-	mlx_data.mlx = mlx_init();
+	scene->mlx = mlx_init();
 	scene->filename = ft_strjoin(scene->filename, "	->	miniRT");
-	mlx_data.win = mlx_new_window(mlx_data.mlx, scene->width, scene->height, scene->filename);
-	mlx_data.img.img = mlx_new_image(mlx_data.mlx, scene->width, scene->height);
-	mlx_data.img.addr = mlx_get_data_addr(mlx_data.img.img, &mlx_data.img.bits_per_pixel, &mlx_data.img.line_length,
-			&mlx_data.img.endian);
-	fill_window(mlx_data.img, scene);
-	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.img.img, 0, 0);
-	mlx_key_hook(mlx_data.win, key_hook, &mlx_data.img);
-	mlx_hook(mlx_data.win, 17, 0, close_x, &mlx_data);
-	mlx_loop(mlx_data.mlx);
+	scene->win = mlx_new_window(scene->mlx, scene->width, scene->height, scene->filename);
+	scene->img.img = mlx_new_image(scene->mlx, scene->width, scene->height);
+	scene->img.addr = mlx_get_data_addr(scene->img.img, &scene->img.bits_per_pixel, &scene->img.line_length,
+			&scene->img.endian);
+	fill_window(scene->img, scene);
+	mlx_put_image_to_window(scene->mlx, scene->win, scene->img.img, 0, 0);
+	mlx_key_hook(scene->win, key_hook, &scene->img);
+	mlx_hook(scene->win, 17, 0, close_x, &scene);
+	mlx_loop(scene->mlx);
 }

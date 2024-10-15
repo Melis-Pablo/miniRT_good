@@ -6,7 +6,7 @@
 /*   By: pmelis <pmelis@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 12:13:29 by pmelis            #+#    #+#             */
-/*   Updated: 2024/10/15 22:03:18 by pmelis           ###   ########.fr       */
+/*   Updated: 2024/10/15 23:06:54 by pmelis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ int	main(int ac, char **av)
 	if (check_acl_amount(scene) != 0)
 		return (free_scene(scene, 1));
 	render(scene);
-	return (free_scene(scene, 0));
+	return (0);
 }
